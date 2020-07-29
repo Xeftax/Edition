@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="mainClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="backClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="editClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="cropClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="pencilClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="lineClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="textClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="highlighterClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="squareClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="circleClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="sendClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="viewModel"
+            type="org.linphone.activities.main.preview.PicturePreviewViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F1B9B9"
+                android:baselineAlignBottom="false"
+                android:clickable="false"
+                android:onClick="@{mainClickListener}"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/back_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/button_background_picture_preview"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{backClickListener}"
+            app:srcCompat="@drawable/back_picture_preview" />
+
+        <ImageView
+            android:id="@+id/edit_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/button_background_picture_preview"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{editClickListener}"
+            app:srcCompat="@drawable/edit_picture_preview" />
+
+        <ImageView
+            android:id="@+id/crop_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background_picture_preview_top"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{cropClickListener}"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/crop_picture_preview" />
+
+        <ImageView
+            android:id="@+id/pencil_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/crop_picture_preview"
+            android:layout_alignEnd="@+id/crop_picture_preview"
+            android:background="@drawable/button_background_picture_preview_color"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{pencilClickListener}"
+            app:layout_constraintEnd_toEndOf="@+id/crop_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/crop_picture_preview"
+            app:srcCompat="@drawable/pencil_picture_preview" />
+
+        <ImageView
+            android:id="@+id/highlighter_picture_preview"
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/crop_picture_preview"
+            android:layout_toStartOf="@+id/pencil_picture_preview"
+            android:background="@drawable/button_background_picture_preview_left"
+            android:backgroundTint="@color/black_color"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{highlighterClickListener}"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/pencil_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/crop_picture_preview"
+            app:srcCompat="@drawable/highlighter_picture_preview" />
+
+        <ImageView
+            android:id="@+id/line_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/pencil_picture_preview"
+            android:layout_alignEnd="@+id/pencil_picture_preview"
+            android:background="@drawable/button_background_picture_preview_color"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{lineClickListener}"
+            app:layout_constraintEnd_toEndOf="@+id/crop_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/pencil_picture_preview"
+            app:srcCompat="@drawable/line_picture_preview" />
+
+        <ImageView
+            android:id="@+id/square_picture_preview"
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/pencil_picture_preview"
+            android:layout_toStartOf="@+id/line_picture_preview"
+            android:background="@drawable/button_background_picture_preview_color"
+            android:backgroundTint="@color/black_color"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{squareClickListener}"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/line_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/pencil_picture_preview"
+            app:srcCompat="@drawable/square_picture_preview" />
+
+        <ImageView
+            android:id="@+id/circle_picture_preview"
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/pencil_picture_preview"
+            android:layout_toStartOf="@+id/square_picture_preview"
+            android:background="@drawable/button_background_picture_preview_left"
+            android:backgroundTint="@color/black_color"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{circleClickListener}"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/square_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/pencil_picture_preview"
+            app:srcCompat="@drawable/circle_picture_preview" />
+
+        <ImageView
+            android:id="@+id/text_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/line_picture_preview"
+            android:layout_alignEnd="@+id/line_picture_preview"
+            android:background="@drawable/button_background_picture_preview_bottom"
+            android:backgroundTint="#B3000000"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{textClickListener}"
+            app:layout_constraintEnd_toEndOf="@+id/crop_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/line_picture_preview"
+            app:srcCompat="@drawable/text_picture_preview" />
+
+        <ImageView
+            android:id="@+id/bar_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/text_picture_preview"
+            android:layout_alignEnd="@+id/text_picture_preview"
+            android:background="@drawable/button_background_picture_preview_color"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/crop_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/text_picture_preview"
+            app:srcCompat="@drawable/bar_picture_preview" />
+
+        <ImageView
+            android:id="@+id/pipette_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/bar_picture_preview"
+            android:layout_alignEnd="@+id/bar_picture_preview"
+            android:background="@drawable/button_background_picture_preview_bottom"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/bar_picture_preview"
+            app:layout_constraintTop_toBottomOf="@+id/bar_picture_preview"
+            app:srcCompat="@drawable/pipette_picture_preview" />
+
+        <ImageView
+            android:id="@+id/bin_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/pipette_picture_preview"
+            android:layout_alignEnd="@+id/pipette_picture_preview"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_background_picture_preview"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pipette_picture_preview"
+            app:srcCompat="@drawable/bin_picture_preview" />
+
+        <ImageView
+            android:id="@+id/send_picture_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignEnd="@+id/crop_picture_preview"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_background_picture_preview"
+            android:backgroundTint="@color/button_pressed_background_picture_preview"
+            android:backgroundTintMode="multiply"
+            android:onClick="@{sendClickListener}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:srcCompat="@drawable/send_picture_preview" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
